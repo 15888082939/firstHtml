@@ -2,11 +2,112 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>H5 List</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-		<div>
-			helloword!!!!!
+	<!-- loading -->
+	<div id="loading">  
+	    <header><h1>H5 List</h1></header>
+	    <div class="loader">
+	        <span class="loader-inner">Loading...</span>
+	    </div>
+	</div>  
+	<div class="content">
+		<header><h1>H5 List</h1></header>
+		<div class="grayline"></div>
+		<div class="appwrap">
+			<ul class="apps">
+				<!-- <li class="appItem">
+					<div class="appImg">
+						<img src="rp.png">
+					</div>
+					<div class="appDes">
+						<h2>Cashkilat <span><img src="img/home_star.svg" alt=""> 4.7</span></h2>
+						<p><img src="img/home_download.svg" alt=""><span> Download</span><span>24,000</span></p>
+						<p><img src="img/home_days.svg" alt=""><span> Proses</span><span>7 Hari</span></p>
+					</div>
+					<div class="appDownload">
+						<button>Download</button>
+						<p>Rp 1.000.000</p>
+						<p>Maximum loan</p>
+					</div>
+				</li> -->
+
+			</ul>
 		</div>
+		
+		
+	</div>
+
 </body>
 </html>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+			var appList=[];
+			$.getJSON("http://api.rupiazone.uangmerah.com/v1/h5/applicationlist",function(data){
+				console.log(data);
+				 appList=data.results;
+				 var average_score=[];   //评分集合
+				 var appDownloads=[];    //下载量
+				 var app_loan_days=[];   //借款周期
+				 var app_loan_max=[];    //最大借款额度
+				 var app_download_url=[]; //下载链接
+				 for(var i=0;i<appList.length;i++){
+					
+					average_score[i]=appList[i].average_score==null? '0.0' : appList[i].average_score;
+					appDownloads[i]=thousandBitSeparator(appList[i].appDownloads,0);
+					app_loan_days[i]=getLoanDay(appList[i].app_loan_days);
+					app_loan_max[i]=thousandBitSeparator(appList[i].app_loan_max,0);
+					app_download_url[i]=getUrl(appList[i].app_download_url,appList[i].app_web);
+					console.log(app_download_url[i]);
+					$('.apps').append("<li class='appItem'><div class='appImg'><img src="+appList[i].app_icon+"></div><div class='appDes'><h2>"+appList[i].app_name+"<span><img src='img/home_star.svg'> "+average_score[i]+"</span></h2><p><img src='img/home_download.svg'><span> Download</span><span>"+appDownloads[i]+"</span></p><p><img src='img/home_days.svg'><span> Proses</span><span>"+app_loan_days[i]+" Hari</span></p></div><div class='appDownload'><button><a href="+app_download_url[i]+" target='_blank'>Download</a></button><p>Rp "+app_loan_max[i]+"</p><p>Maximum loan</p>")
+				}
+				$('#loading').hide();
+
+				    
+
+			})
+			// 千位分隔
+			var thousandBitSeparator = function(s, type) {
+			    if (/[^0-9\.]/.test(s)) return "0.00";
+			    if (s == null || s == "null" || s == "") return "0";
+			    s = s.toString().replace(/^(\d*)$/, "$1.");
+			    s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
+			    s = s.replace(".", ",");
+			    var re = /(\d)(\d{3},)/;
+			    while (re.test(s)) s = s.replace(re, "$1,$2");
+			    s = s.replace(/,(\d\d)$/, ".$1");
+			    if (type == 0) {
+			        var a = s.split(".");
+			        if (a[1] == "00") {
+			            s = a[0];
+			        }
+			    }
+			    return s;
+			};
+			
+			//周期取第一个
+			var getLoanDay = function(str){
+				var dayArr = str.split("|");
+				if(dayArr[0]==''){
+					return dayArr[1];
+				}
+				return dayArr[0];
+			}
+			// 获取下载链接或web url
+			var getUrl = function(downUrl,webUrl){
+				if(downUrl){
+					return downUrl;
+				}else{
+					return webUrl;
+				}
+			}
+			
+
+	})
+	
+</script>

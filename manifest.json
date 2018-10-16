@@ -1,0 +1,21 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Rupiazone Apps List",
+  "scope": "/",
+  "display": "browser",
+  "start_url": "/",
+  "short_name": "Rupiazone Apps List",
+  "theme_color": "transparent",
+  "description": "Share More, Gain More. -Rupiazone Apps List",
+  "orientation": "any",
+  "background_color": "transparent",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [ {
+    "src": "img/logo.png",
+    "sizes": "48x48",
+    "type": "image/png"
+  } 
+  ]
+}
