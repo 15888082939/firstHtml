@@ -21,7 +21,7 @@
 		<div class="grayline"></div>
 		<div class="appwrap">
 			<ul class="apps">
-				<!-- <li class="appItem">
+				<li class="appItem">
 					<div class="appImg">
 						<img src="rp.png">
 					</div>
@@ -35,7 +35,7 @@
 						<p>Rp 1.000.000</p>
 						<p>Maximum loan</p>
 					</div>
-				</li> -->
+				</li>
 
 			</ul>
 		</div>
@@ -50,29 +50,29 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 			var appList=[];
-			$.getJSON("https://api.rupiazone.com/v1/h5/applicationlist",function(data){
-				console.log(data);
-				 appList=data.results;
-				 var average_score=[];   //评分集合
-				 var appDownloads=[];    //下载量
-				 var app_loan_days=[];   //借款周期
-				 var app_loan_max=[];    //最大借款额度
-				 var app_download_url=[]; //下载链接
-				 for(var i=0;i<appList.length;i++){
+			// $.getJSON("https://api.rupiazone.com/v1/h5/applicationlist",function(data){
+			// 	console.log(data);
+			// 	 appList=data.results;
+			// 	 var average_score=[];   //评分集合
+			// 	 var appDownloads=[];    //下载量
+			// 	 var app_loan_days=[];   //借款周期
+			// 	 var app_loan_max=[];    //最大借款额度
+			// 	 var app_download_url=[]; //下载链接
+			// 	 for(var i=0;i<appList.length;i++){
 					
-					average_score[i]=appList[i].average_score==null? '0.0' : appList[i].average_score;
-					appDownloads[i]=thousandBitSeparator(appList[i].appDownloads,0);
-					app_loan_days[i]=getLoanDay(appList[i].app_loan_days);
-					app_loan_max[i]=thousandBitSeparator(appList[i].app_loan_max,0);
-					app_download_url[i]=getUrl(appList[i].app_download_url,appList[i].app_web);
-					console.log(app_download_url[i]);
-					$('.apps').append("<li class='appItem'><div class='appImg'><img src="+appList[i].app_icon+"></div><div class='appDes'><h2>"+appList[i].app_name+"<span><img src='img/home_star.svg'> "+average_score[i]+"</span></h2><p><img src='img/home_download.svg'><span> Download</span><span>"+appDownloads[i]+"</span></p><p><img src='img/home_days.svg'><span> Proses</span><span>"+app_loan_days[i]+" Hari</span></p></div><div class='appDownload'><button><a href="+app_download_url[i]+" target='_blank'>Download</a></button><p>Rp "+app_loan_max[i]+"</p><p>Maximum loan</p>")
-				}
+			// 		average_score[i]=appList[i].average_score==null? '0.0' : appList[i].average_score;
+			// 		appDownloads[i]=thousandBitSeparator(appList[i].appDownloads,0);
+			// 		app_loan_days[i]=getLoanDay(appList[i].app_loan_days);
+			// 		app_loan_max[i]=thousandBitSeparator(appList[i].app_loan_max,0);
+			// 		app_download_url[i]=getUrl(appList[i].app_download_url,appList[i].app_web);
+			// 		console.log(app_download_url[i]);
+			// 		$('.apps').append("<li class='appItem'><div class='appImg'><img src="+appList[i].app_icon+"></div><div class='appDes'><h2>"+appList[i].app_name+"<span><img src='img/home_star.svg'> "+average_score[i]+"</span></h2><p><img src='img/home_download.svg'><span> Download</span><span>"+appDownloads[i]+"</span></p><p><img src='img/home_days.svg'><span> Proses</span><span>"+app_loan_days[i]+" Hari</span></p></div><div class='appDownload'><button><a href="+app_download_url[i]+" target='_blank'>Download</a></button><p>Rp "+app_loan_max[i]+"</p><p>Maximum loan</p>")
+			// 	}
 				$('#loading').hide();
 
 				    
 
-			})
+			// })
 			// 千位分隔
 			var thousandBitSeparator = function(s, type) {
 			    if (/[^0-9\.]/.test(s)) return "0.00";
