@@ -4,7 +4,7 @@
   "name": "Rupiazone Apps List",
   "scope": "/",
   "display": "standalone",
-  "start_url": "/?launcher=true",
+  "start_url": "/index?launcher=true",
   "short_name": "Rupiazone Apps List",
   "theme_color": "transparent",
   "description": "Share More, Gain More. -Rupiazone Apps List",
