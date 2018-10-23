@@ -12,7 +12,7 @@ caches.open(CACHE_NAME)
 
 .then(cache =>{
 
-returncache.addAll(urlsToCache);
+return cache.addAll(urlsToCache);
 
 });
 
