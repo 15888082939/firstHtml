@@ -1,4 +1,4 @@
-constCACHE_NAME= "fed-cache";
+const CACHE_NAME= "fed-cache";
 
 this.addEventListener("install",function(event){
 
