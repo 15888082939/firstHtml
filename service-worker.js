@@ -12,7 +12,7 @@ caches.open(CACHE_NAME);
 
 // 首页
 
-let cacheResources= ["https://fed.renren.com/?launcher=true"];
+let cacheResources= ["https://cxx-html.herokuapp.com/"];
 
 event.waitUntil(
 
