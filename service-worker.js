@@ -4,7 +4,7 @@ const urlsToCache =[
 '/',
 '/css/index.css',
 '/img/logo.png',
-  '/index.html',
+  'https://cxx-html.herokuapp.com',
 ];
 
 self.addEventListener('install',event =>{
