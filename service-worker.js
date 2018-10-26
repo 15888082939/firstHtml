@@ -12,7 +12,7 @@ caches.open(CACHE_NAME);
 
 // 首页
 
-let cacheResources= ["https://cxx-html.herokuapp.com"];
+let cacheResources= ["https://cxx-html.herokuapp.com/index.html"];
 
 event.waitUntil(
 
