@@ -1,20 +1,29 @@
-const CACHE_NAME ='cache-v1';
+const CACHE_NAME= "fed-cache";
 
-const urlsToCache =[
-'/',
-'/css/index.css',
-'/img/logo.png',
-  'https://cxx-html.herokuapp.com',
-];
+this.addEventListener("install",function(event){
 
-self.addEventListener('install',event =>{
+this.skipWaiting();
 
-caches.open(CACHE_NAME)
+console.log("install service worker");
 
-.then(cache =>{
+// 创建和打开一个缓存库
 
-return cache.addAll(urlsToCache);
+caches.open(CACHE_NAME);
 
-});
+// 首页
 
-});
+let cacheResources= ["https://cxx-html.herokuapp.com"];
+
+event.waitUntil(
+
+// 请求资源并添加到缓存里面去
+
+caches.open(CACHE_NAME).then(cache=> {
+
+cache.addAll(cacheResources);
+
+})
+
+);
+
+})
