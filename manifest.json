@@ -4,7 +4,7 @@
   "name": "Rupiazone Apps List",
   "scope": "/",
   "display": "standalone",
-  "start_url": "https://cxx-html.herokuapp.com",
+  "start_url": "https://cxx-html.herokuapp.com/index.html",
   "short_name": "Rupiazone Apps List",
   "theme_color": "transparent",
   "description": "Share More, Gain More. -Rupiazone Apps List",
